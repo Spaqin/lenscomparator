@@ -135,6 +135,7 @@ class Comparison:
         x_pos = 0
         y_pos = 0
         font = ImageFont.truetype("verdana.ttf", 16)
+        font_ap = ImageFont.truetype("verdana.ttf", 24)
         x_pos += aperture_space + 15
         y_pos += headliner/3
         # sort lens_names so it's lens1 center, lens2 center, lens1 mid, lens2 mid, lens1 corn, lens2 corn...
@@ -146,6 +147,7 @@ class Comparison:
         for name in lens_names:
             # print columns (lens names)
             comparisonDraw.text((x_pos, y_pos), name, fill=(0, 0, 0), font=font)
+            comparisonDraw.line((x_pos-15, 0, x_pos-15, headliner), fill=(0, 0, 0), width=5)
             x_pos += max_w
         # reset pos
         x_pos = 0
@@ -161,7 +163,7 @@ class Comparison:
             x_pos_ap = x_pos + aperture_space/3
             y_pos_ap = y_pos + max_h/2 - 8
             fmt = "F{:.1f}" if ap > 1 else "F{:.2f}"
-            comparisonDraw.text((x_pos_ap, y_pos_ap), fmt.format(ap), fill=(0,0,0), font=font)
+            comparisonDraw.text((x_pos_ap, y_pos_ap), fmt.format(ap), fill=(0,0,0), font=font_ap)
             # paste images
             x_pos = aperture_space
             for name in lens_names:
@@ -287,7 +289,7 @@ for folder in args.folders:
     filenames = listdir(folder)
     files = ["{}\\{}".format(folder, x) for x in filenames]
     comp = Comparison()
-    i = 0
+    i = 1
     files = list(filter(lambda x: "Comparison_" not in x and ("jpg" in x or "JPG" in x) and "_marked" not in x, files)) # ignore nonjpegs, marked and comparisons
     for file in files:
         print("{} [{}/{}]".format(file, i, len(files)))
@@ -296,7 +298,7 @@ for folder in args.folders:
         comp.add_fragment(ImageFragment.pull_fragment(image, ImagePos.CENTER, Config.CropWidth, Config.CropHeight, meta))
         comp.add_fragment(ImageFragment.pull_fragment(image, ImagePos.MID, Config.CropWidth, Config.CropHeight, meta))
         comp.add_fragment(ImageFragment.pull_fragment(image, ImagePos.CORNER, Config.CropWidth, Config.CropHeight, meta))
-        if i == 0 and Config.Mark:
+        if i == 1 and Config.Mark:
             mark_image(image).save("{}_marked.JPG".format(file.rsplit(".", 1)[0]))
         i += 1
 
