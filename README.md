@@ -23,7 +23,25 @@ Seems like more steps, no? I assure you, they're all much shorter.
 
 Of course it's not as flexible as going through the images side by side in Lightroom, but it's not supposed to be.
 
-Yes, it supports JPEGs, not RAWs. I don't think it will ever support RAWs. TIFFs however are a fairer game (as in, if someone asked very nicely or donated something, I could add it within a day).
+Yes, it supports JPEGs, not RAWs. I don't think it will ever support RAWs. TIFFs however are a fairer game (as in, if someone asked very nicely or donated something, I could add it within a day). Yes, JPEGs have corrections baked in. Makes it even more incredible when Chinese lenses beat (at least in sharpness) official Fujinons 8)
+
+# Examples 
+
+150usd ultrawide for fuji, how bad can it be?
+
+Let's test it out.
+Files were named ``BrightinStar12mmf2_12_<aperture>.JPG`` and put into ``bs12mm`` folder.
+
+Program was called: ``python lenscomparator.py -mk -m -kp 0,0 bs12mm``
+
+Marked image:
+![BrightinStar 12mm at f11](ex_marked.JPG)
+
+Results from the comparison:
+![uh oh these corners don't look too great](ex_comp.JPG)
+
+Oh well. Center/mid are certainly usable across all ranges, although it truly gets sharp from f4 onwards. Corners are soft as hell, though, by f11 I would call them OK. I assume there's field curvature at play (later testing did prove that, could fiddle with focusing to make corners better probably).
+Anyway. That's how it is used. Took me 20 minutes in total. Similar comparison done with the help of lightroom and photoshop would take me an hour, if not more, of just editing.
 
 # help message
 
