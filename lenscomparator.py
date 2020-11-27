@@ -169,7 +169,7 @@ class Comparison:
             for name in lens_names:
                 fragment = apertures[ap].get(name, None)
                 if fragment:
-                    comparisonImg.paste(fragment.image, (x_pos, y_pos))
+                    comparisonImg.paste(fragment.image, (x_pos, y_pos+int(space/2)))
                 x_pos += max_w
             y_pos += max_h + space
             x_pos = 0
